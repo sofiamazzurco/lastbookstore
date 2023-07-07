@@ -1,5 +1,6 @@
 import React from 'react';
 import { db } from '../../firebase/configDB';
+import { toast } from 'react-toastify';
 
 const DeleteBookButton = ({ bookId }) => {
   const handleDeleteBook = () => {
@@ -10,9 +11,11 @@ const DeleteBookButton = ({ bookId }) => {
         .doc(bookId)
         .delete()
         .then(() => {
+          toast.success("¡Libro eliminado exitosamente!");
           console.log("Libro eliminado exitosamente");
         })
         .catch((error) => {
+          toast.error("Error al eliminar el libro");
           console.error("Error al eliminar el libro", error);
         });
     }

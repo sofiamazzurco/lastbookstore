@@ -11,6 +11,10 @@ import { Button } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
+
+
+
+
 const auth = getAuth(firebaseApp);
 
 
@@ -20,8 +24,10 @@ const Login = () => {
   const navigation = useNavigate();
   const translate = useTranslation();
   const [error, setError] = useState("");
+ 
 
-
+ 
+  
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
@@ -50,6 +56,7 @@ const Login = () => {
       
   }
 
+  
   return (
     <div>
 
@@ -109,8 +116,11 @@ const Login = () => {
         <div className="d-grid gap-2 d-md-flex justify-content-md-end me-md-2 p-2">
           <ToggleTheme />
           <ComboLanguage />
+        
+
         </div>
       </div>
+    
       <ToastContainer />
     </div>
   );

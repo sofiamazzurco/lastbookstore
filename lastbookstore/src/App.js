@@ -5,6 +5,7 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 
+
 import "./App.css";
 
 import Login from "./components/Login/Login";
@@ -15,6 +16,8 @@ import { ThemeContext } from "./components/services/theme/theme.context";
 import Singin from "./components/Singup/Singup";
 import Registered from "./components/routes/Registered";
 import AddAdminForm from "./components/AddAdmin/AddAdminForm/AddAdminForm";
+import ReportProblem from "./components/Footer/ReportProblem/ReportProblem";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -40,6 +43,13 @@ const App = () => {
       ),
     },
     {
+      path: "/report-problem",
+      element: (
+          <ReportProblem />
+      ),
+    },
+
+    {
       path: "*",
       element: <NotFound />,
     },
@@ -47,11 +57,14 @@ const App = () => {
       path: "/addAdmin",
       element: <AddAdminForm />
     },
+   
   ]);
   return (
+   
     <div className={`${theme === "dark" && "dark-theme"}`}>
       <RouterProvider router={router} />
     </div>
+    
   );
 };
 
