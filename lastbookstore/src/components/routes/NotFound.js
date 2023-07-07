@@ -13,11 +13,13 @@ const NotFound = () => {
   };
 
   return (
-    <div className="d-flex  flex-column justify-content-center align-items-center">
-      <h2>La pagina no esta disponible</h2>
-      <Button className="w-25" onClick={goBackHandler}>
-        Volver al Login
-      </Button>
+    <div className="background">
+      <div className="container">
+        <h2>La pagina no esta disponible</h2>
+        <Button className="button" onClick={goBackHandler}>
+          Volver al Login
+        </Button>
+      </div>
     </div>
   );
 };
