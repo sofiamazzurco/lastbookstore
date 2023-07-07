@@ -8,7 +8,7 @@ import Spinner from "../ui/Spinner/Spinner";
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
-const Protected = ({ children }) => {
+const ProtectedUser = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -53,11 +53,11 @@ const Protected = ({ children }) => {
     return <div><Spinner /></div>;
   }
 
-  if (!user || user.rol !== "superAdmin") {
+  if (!user) {
     return <Navigate to="/login" replace />;
   }
 
   return <>{children}</>;
 };
 
-export default Protected;
+export default ProtectedUser;

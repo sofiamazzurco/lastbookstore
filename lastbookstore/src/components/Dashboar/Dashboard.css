@@ -1,7 +1,6 @@
 .dashboard-bg {
     background-color: #EBE6DB;
-    height: 100%;
-    width: 100%;
+    min-height: 100vh
 }
 
 .dashboard-bg-dark{

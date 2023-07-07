@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './ListUser.css';
 import { db } from '../../firebase/configDB';
+import './ListUser.css';
 
 
 const ListUser = () => {

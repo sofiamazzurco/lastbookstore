@@ -17,12 +17,14 @@ import AddAdminForm from "./components/AddAdmin/AddAdminForm/AddAdminForm";
 import NewUsersButton from "./components/NewUsers/NewUsersButton/NewUsersButton";
 import ListUser from "./components/ListUser/ListUser";
 import NewUserForm from "./components/NewUsers/NewUserForm/NewUserForm";
+import Protected from "./components/routes/Protected";
+import ProtectedUser from "./components/routes/ProtectedUser";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
 
   const router = createBrowserRouter([
-    { path: "/", element: <Navigate to="login" /> },
+    { path: "/", element: <Login /> },
     {
       path: "/login",
       element: <Login />,
@@ -37,11 +39,11 @@ const App = () => {
     },
     {
       path: "/home",
-      element: <Dashboard />
+      element: <ProtectedUser><Dashboard /></ProtectedUser>
     },
     {
       path: "/listuser",
-      element: <ListUser />
+      element: <Protected><ListUser /></Protected>
     },
     {
       path: "*",
@@ -57,7 +59,7 @@ const App = () => {
     },
     {
       path: "/addAdmin",
-      element: <AddAdminForm />
+      element:<Protected><AddAdminForm /></Protected>
     },
   ]);
 

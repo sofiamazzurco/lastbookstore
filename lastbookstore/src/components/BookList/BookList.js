@@ -8,6 +8,9 @@ import EditBookButton from "../EditBook/EditBookButton";
 import firebaseApp from "../../firebase/config";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
@@ -138,6 +141,25 @@ const BookList = () => {
       });
   };
 
+  const handleRemoveFromCart = (bookId) => {
+    const removedBook = cartItems.find((book) => book.id === bookId);
+
+    if (removedBook) {
+      const confirmRemove = window.confirm(
+        `¿Estás seguro de eliminar "${removedBook.title}" de tus Favoritos?`
+      );
+
+      if (confirmRemove) {
+        setCartItems((prevItems) =>
+          prevItems.filter((book) => book.id !== bookId)
+        );
+        toast.success("¡Tu libro ha sido eliminado de favoritos!");
+      } else {
+        toast.info("Tu libro sigue en favoritos.");
+      }
+    }
+  };
+
   return (
     <div className="book-list">
       <button onClick={() => setShowCart(!showCart)}>
@@ -156,11 +178,11 @@ const BookList = () => {
                 <li key={book.id}>
                   <h4>{book.title}</h4>
                   <p>{book.author}</p> 
+                  <button onClick={() => handleRemoveFromCart(book.id)}>🗑</button>
                 </li>
               ))}
             </ul>
           )}
-          <button onClick={() => setCartItems([])}>Empty Cart</button>
         </div>
       )}
 
@@ -205,9 +227,9 @@ const BookList = () => {
                 <p>Description: {book.description}</p>
                 <img src={book.img || { ImgDefault }} alt="Portada del libro" />
                 <div className="buttons-container">
-                  {user?.rol === "admin" || user?.rol === "superadmin" ? <DeleteBookButton bookId={book.id} /> : <></>}
+                  {user?.rol === "admin" || user?.rol === "superAdmin" ? <DeleteBookButton bookId={book.id} /> : <></>}
 
-                  {user?.rol === "admin" || user?.rol === "superadmin" ?
+                  {user?.rol === "admin" || user?.rol === "superAdmin" ?
                     <EditBookButton
                       bookId={book.id}
                       handleEditBook={handleEditBook}
@@ -227,6 +249,7 @@ const BookList = () => {
           </div>
         ))}
       </div>
+      <ToastContainer/>
     </div>
   );
 };

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AddAdminButton from "../AddAdmin/AddAdminButton/AddAdminButton";
 import BookList from "../BookList/BookList";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import NewBookButton from "../NewBookButton/NewBookButton";
+import { ThemeContext } from "../services/theme/theme.context";
+import "./Dashboard.css"
 //-----
 import { useNavigate } from "react-router";
 import firebaseApp from "../../firebase/config";
@@ -15,6 +17,7 @@ const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
 const Dashboard = () => {
+  const { theme } = useContext(ThemeContext);
   const navigation = useNavigate();
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
@@ -56,12 +59,14 @@ const Dashboard = () => {
 
   return (
     <>
-      <Navbar/>  
-      {(user?.rol === "admin" || user?.rol === "superadmin") && <AddAdminButton/>}
-      {(user?.rol === "admin" || user?.rol === "superadmin") && <NewBookButton/>}
-      {(user?.rol  === "superadmin") && <ListUserButton />}
-      <BookList />
-      <Footer />
+     <div className={`dashboard-bg ${theme === "dark" && "dashboard-bg-dark"}`}>
+        <Navbar/>  
+        {(user?.rol === "superAdmin") && <AddAdminButton/>}
+        {(user?.rol === "admin" || user?.rol === "superAdmin") && <NewBookButton/>}
+        {(user?.rol  === "superAdmin") && <ListUserButton />}
+        <BookList />
+        <Footer />
+      </div>
     </>
   );
 };
