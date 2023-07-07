@@ -15,10 +15,9 @@ import { ThemeContext } from "./components/services/theme/theme.context";
 import Singin from "./components/Singup/Singup";
 import Registered from "./components/routes/Registered";
 import AddAdminForm from "./components/AddAdmin/AddAdminForm/AddAdminForm";
-import NewBookButton from "./components/NewBookButton/NewBookButton";
 import NewUsersButton from "./components/NewUsers/NewUsersButton/NewUsersButton";
 import ListUser from "./components/ListUser/ListUser";
-import Protected from "./components/routes/Protected";
+import NewUserForm from "./components/NewUsers/NewUserForm/NewUserForm";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -52,9 +51,16 @@ const App = () => {
       element: <NotFound />,
     },
     {
+      path: "/newuserbutton",
+      element: <NewUsersButton />
+    },
+    {
+      path: "/newuser",
+      element: <NewUserForm />
+    },
+    {
       path: "/addAdmin",
-      element:<Protected><AddAdminForm/></Protected>
-      
+      element: <AddAdminForm />
     },
   ]);
   return (

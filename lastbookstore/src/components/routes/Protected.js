@@ -1,63 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router";
-import firebaseApp from "../../firebase/config";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+/*import React, { useContext } from "react";
 import Spinner from "../ui/Spinner/Spinner";
-
-const auth = getAuth(firebaseApp);
-const firestore = getFirestore(firebaseApp);
+import { Navigate } from "react-router";
+import {  useAuth } from "../services/authentication/authentication.context";
 
 const Protected = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { user, isLoading} = useAuth();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (userFirebase) => {
-      if (userFirebase) {
-        if (!user) {
-          setUserWithFirebaseAndRol(userFirebase);
-        }
-      } else {
-        setUser(null);
-        setIsLoading(false);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  const getRol = async (uid) => {
-    const docRef = doc(firestore, `user/${uid}`);
-    const docEncryption = await getDoc(docRef);
-    const finalInfo = docEncryption.data().rol;
-    return finalInfo;
-  };
-
-  const setUserWithFirebaseAndRol = async (userFirebase) => {
-    const rol = await getRol(userFirebase.uid);
-    const userData = {
-      uid: userFirebase.uid,
-      email: userFirebase.email,
-      rol: rol,
-    };
-    setUser(userData);
-    setIsLoading(false);
-    console.log("userData final", userData);
-  };
-
-  if (isLoading) {
-    // Muestra un indicador de carga mientras se obtienen los datos del usuario
-    return <div className="d-flex justify-content-center"><Spinner/></div>;
-  }
-
-  if (!user || user.rol === "user") {
-    return <Navigate to="/login" replace />;
-  }
+  if (isLoading) return <Spinner />;
+  if (!user) return <Navigate to="/login" replace />;
 
   return <>{children}</>;
 };
 
-export default Protected;
+export default Protected;*/
