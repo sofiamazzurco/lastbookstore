@@ -18,6 +18,7 @@ import AddAdminForm from "./components/AddAdmin/AddAdminForm/AddAdminForm";
 import NewBookButton from "./components/NewBookButton/NewBookButton";
 import NewUsersButton from "./components/NewUsers/NewUsersButton/NewUsersButton";
 import ListUser from "./components/ListUser/ListUser";
+import Protected from "./components/routes/Protected";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -52,7 +53,8 @@ const App = () => {
     },
     {
       path: "/addAdmin",
-      element: <AddAdminForm />
+      element:<Protected><AddAdminForm/></Protected>
+      
     },
   ]);
   return (

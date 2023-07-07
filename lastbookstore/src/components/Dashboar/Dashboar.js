@@ -53,13 +53,13 @@ const Dashboard = () => {
   })
   
   return (
-    <>
+    <div>
       <Navbar/>  
-      {user?.rol !== "user" ? <AddAdminButton/> : <></>}
-      {user?.rol !== "user" ? <NewBookButton/> : <></>}
+      {user && user.rol !== "user" && <AddAdminButton />}
+      {user && user.rol !== "user" && <NewBookButton />}
       <BookList />
       <Footer />
-    </>
+    </div>
   );
 };
 
