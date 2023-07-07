@@ -5,7 +5,6 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 
-
 import "./App.css";
 
 import Login from "./components/Login/Login";
@@ -16,8 +15,10 @@ import { ThemeContext } from "./components/services/theme/theme.context";
 import Singin from "./components/Singup/Singup";
 import Registered from "./components/routes/Registered";
 import AddAdminForm from "./components/AddAdmin/AddAdminForm/AddAdminForm";
-import ReportProblem from "./components/Footer/ReportProblem/ReportProblem";
-import Footer from "./components/Footer/Footer";
+import NewBookButton from "./components/NewBookButton/NewBookButton";
+import NewUsersButton from "./components/NewUsers/NewUsersButton/NewUsersButton";
+import ListUser from "./components/ListUser/ListUser";
+import Protected from "./components/routes/Protected";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -43,28 +44,23 @@ const App = () => {
       ),
     },
     {
-      path: "/report-problem",
-      element: (
-          <ReportProblem />
-      ),
+      path: "/listuser",
+      element: <ListUser />
     },
-
     {
       path: "*",
       element: <NotFound />,
     },
     {
       path: "/addAdmin",
-      element: <AddAdminForm />
+      element:<Protected><AddAdminForm/></Protected>
+      
     },
-   
   ]);
   return (
-   
     <div className={`${theme === "dark" && "dark-theme"}`}>
       <RouterProvider router={router} />
     </div>
-    
   );
 };
 
