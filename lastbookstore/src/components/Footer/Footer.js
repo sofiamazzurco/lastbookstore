@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useContext } from "react";
 import "./Footer.css"
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+
+
 
 const Footer = () => {
   const navigate = useNavigate();
-
+  
   const handleReportProblem = () => {
     // Redirige al usuario a la página del formulario de reporte
     navigate('/reportProblem');
@@ -12,9 +16,22 @@ const Footer = () => {
 
   return (
     <footer className="footer">
+      
       <div className="footer-content">
         <p>© 2023 Biblioteca Virtual UTN. Todos los derechos reservados.</p>
         <div className="report-problem">
+
+        <div className="social-icons">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faFacebook} />
+        </a>
+        <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faTwitter} />
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faInstagram} />
+        </a>
+      </div>
           <span>Reportar un problema</span>
           <button className="report-button" onClick={handleReportProblem}>
             Reportar

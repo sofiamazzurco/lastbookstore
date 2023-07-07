@@ -8,6 +8,7 @@ import firebaseApp from "../../firebase/config";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
@@ -122,6 +123,7 @@ const Login = () => {
       </div>
     
       <ToastContainer />
+     
     </div>
   );
 }

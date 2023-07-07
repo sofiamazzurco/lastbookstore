@@ -180,8 +180,8 @@ const BookList = () => {
               {cartItems.map((book) => (
                 <li key={book.id}>
                   <h4>{book.title}</h4>
-                  <p>{book.author}</p>
                   <button onClick={() => handleRemoveFromCart(book.id)}>🗑️</button>
+                  <p>{book.author}</p> 
                 </li>
               ))}
             </ul>
