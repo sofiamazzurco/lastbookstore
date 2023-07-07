@@ -13,10 +13,12 @@ import TranslationContextProvider from "./components/services/translation/transl
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+
     <ThemeContextProvider>
       <TranslationContextProvider>
         <App />
       </TranslationContextProvider>
     </ThemeContextProvider>
+
   </React.StrictMode>
 );

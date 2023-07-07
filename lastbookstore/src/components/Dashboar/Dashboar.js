@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FireBase from "../../firebase/FireBase";
 import AddAdminButton from "../AddAdmin/AddAdminButton/AddAdminButton";
 import BookList from "../BookList/BookList";
 import Navbar from "../Navbar/Navbar";
@@ -59,7 +58,6 @@ const Dashboard = () => {
       {user?.rol !== "user" ? <AddAdminButton/> : <></>}
       {user?.rol !== "user" ? <NewBookButton/> : <></>}
       <BookList />
-      <FireBase />
       <Footer />
     </>
   );

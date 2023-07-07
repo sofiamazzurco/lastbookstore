@@ -9,13 +9,12 @@ import "./App.css";
 
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboar/Dashboar";
+//import Protected from "./components/routes/Protected";
 import NotFound from "./components/routes/NotFound";
 import { ThemeContext } from "./components/services/theme/theme.context";
 import Singin from "./components/Singup/Singup";
 import Registered from "./components/routes/Registered";
-import FireBase from "./firebase/FireBase";
-
-
+import AddAdminForm from "./components/AddAdmin/AddAdminForm/AddAdminForm";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -45,10 +44,9 @@ const App = () => {
       element: <NotFound />,
     },
     {
-      path: "/fireBase",
-      element: <FireBase />
+      path: "/addAdmin",
+      element: <AddAdminForm />
     },
-
   ]);
   return (
     <div className={`${theme === "dark" && "dark-theme"}`}>
