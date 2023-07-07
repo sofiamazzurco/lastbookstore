@@ -4,6 +4,7 @@ import BookList from "../BookList/BookList";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import NewBookButton from "../NewBookButton/NewBookButton";
+import "./Dashboard.css"
 //-----
 import { useNavigate } from "react-router";
 import firebaseApp from "../../firebase/config";
@@ -53,8 +54,8 @@ const Dashboard = () => {
   })
   
   return (
-    <div>
-      <Navbar/>  
+    <div className="dashboard-bg">
+      <Navbar />  
       {user && user.rol !== "user" && <AddAdminButton />}
       {user && user.rol !== "user" && <NewBookButton />}
       <BookList />
