@@ -10,6 +10,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
+import { Button } from "react-bootstrap";
 
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
@@ -162,11 +163,10 @@ const BookList = () => {
 
   return (
     <div className="book-list">
-      <button onClick={() => setShowCart(!showCart)}>
+      <Button className="mb-3" onClick={() => setShowCart(!showCart)}>
         Favorites ({cartItems.length})
-      </button>
+      </Button>
 
-      <h2>Books:</h2>
       {showCart && (
         <div className="cart-books">
           <h3>Your Favorites Books </h3>
@@ -186,6 +186,7 @@ const BookList = () => {
         </div>
       )}
 
+      <h2>Books:</h2>
       <div className="book-grid">
         {books.map((book) => (
           <div key={book.id} className="book-card">

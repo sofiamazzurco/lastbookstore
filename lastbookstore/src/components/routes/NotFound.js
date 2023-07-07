@@ -1,9 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./StyleMessange.css"
+import useTranslation from "../custom/useTranslation/useTranslation";
 
 const NotFound = () => {
   const navigation = useNavigate();
+  const translate = useTranslation();
 
   const goBackHandler = () => {
     navigation("/login");

@@ -1,13 +1,14 @@
 import React, { useState, useContext } from "react";
-import "./Footer.css"
+import { ThemeContext } from "../services/theme/theme.context";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-
+import "./Footer.css"
 
 
 const Footer = () => {
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
   
   const handleReportProblem = () => {
     // Redirige al usuario a la página del formulario de reporte
@@ -15,7 +16,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer">
+    <footer className={`footer ${theme === "dark" && "footer-dark"}`}>
       
       <div className="footer-content">
         <p>© 2023 Biblioteca Virtual UTN. Todos los derechos reservados.</p>

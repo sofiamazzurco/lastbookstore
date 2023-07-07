@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase/configDB';
 import './ListUser.css';
+import { Nav } from 'react-bootstrap';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 
 
 const ListUser = () => {
@@ -39,17 +42,19 @@ const ListUser = () => {
 
   return (
     <div>
+      <Navbar/>
       <div className="user-list">
         <h2>User List</h2>
         <div className="user-grid">
           {users.map((user) => (
             <div className="user-card" key={user.id}>
               <h3>{user.name}</h3>
-              <p>{user.email}</p>
+              <p>{user.correo}</p>
               <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
             </div>
           ))}
         </div>
+        <Footer/>
       </div>
     </div>
   );
