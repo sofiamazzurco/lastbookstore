@@ -205,9 +205,9 @@ const BookList = () => {
                 <p>Description: {book.description}</p>
                 <img src={book.img || { ImgDefault }} alt="Portada del libro" />
                 <div className="buttons-container">
-                  {user?.rol !== "user" ? <DeleteBookButton bookId={book.id} /> : <></>}
+                  {user?.rol === "admin" || user?.rol === "superadmin" ? <DeleteBookButton bookId={book.id} /> : <></>}
 
-                  {user?.rol !== "user" ?
+                  {user?.rol === "admin" || user?.rol === "superadmin" ?
                     <EditBookButton
                       bookId={book.id}
                       handleEditBook={handleEditBook}

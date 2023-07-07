@@ -6,7 +6,7 @@ const NewUsersButton = () => {
 
     return (
         <div className="add-user">
-            <Link to="/adduser">
+            <Link to="/newuser">
                 <button>Add User</button>
             </Link>
         </div>

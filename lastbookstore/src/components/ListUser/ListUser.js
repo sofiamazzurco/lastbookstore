@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ListUser.css';
 import { db } from '../../firebase/configDB';
-import Navbar from '../Navbar/Navbar';
 
 const ListUser = () => {
   const [users, setUsers] = useState([]);
@@ -39,7 +38,6 @@ const ListUser = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="user-list">
         <h2>User List</h2>
         <div className="user-grid">
