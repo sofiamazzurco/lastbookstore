@@ -1,5 +1,9 @@
-   .dashboard-bg {
+.dashboard-bg {
     background-color: #EBE6DB;
     height: 100%;
     width: 100%;
+}
+
+.dashboard-bg-dark{
+    background-color: #030838;
 }

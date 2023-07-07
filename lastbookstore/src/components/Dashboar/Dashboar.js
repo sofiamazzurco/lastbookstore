@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AddAdminButton from "../AddAdmin/AddAdminButton/AddAdminButton";
 import BookList from "../BookList/BookList";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import NewBookButton from "../NewBookButton/NewBookButton";
 import "./Dashboard.css"
+import { ThemeContext } from "../services/theme/theme.context";
 //-----
 import { useNavigate } from "react-router";
 import firebaseApp from "../../firebase/config";
@@ -14,6 +15,7 @@ const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
 const Dashboard = () => {
+  const { theme } = useContext(ThemeContext);
   const navigation = useNavigate();
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
@@ -54,7 +56,7 @@ const Dashboard = () => {
   })
   
   return (
-    <div className="dashboard-bg">
+    <div className={`dashboard-bg ${theme === "dark" && "dashboard-bg-dark"}`}>
       <Navbar />  
       {user && user.rol !== "user" && <AddAdminButton />}
       {user && user.rol !== "user" && <NewBookButton />}

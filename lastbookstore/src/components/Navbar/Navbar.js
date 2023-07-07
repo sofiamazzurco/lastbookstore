@@ -22,18 +22,17 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar'>
+    <div className={`navbar ${theme === "dark" && "navbar-dark"}`}>
       <div className={`img ${theme === "dark" && "img-dark"}`}>
           <img src="https://utn.edu.ar/images/logo-utn.png" />
         </div>
-      <Row className="me-2 my-4">
-        <Col md={3} className="d-flex flex-row justify-content-end">
-          <ToggleTheme />
-          <Button className="ms-4" variant="primary" onClick={onLogoutHandler}>
+        <div>
+        <ToggleTheme />
+          <Button className="ms-3 me-2 w-5" variant="primary" onClick={onLogoutHandler}>
             Cerrar sesión
           </Button>
-        </Col>
-      </Row>
+        </div>
+    
     </div>
   );
 };
