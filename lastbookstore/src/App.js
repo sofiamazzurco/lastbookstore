@@ -9,7 +9,6 @@ import "./App.css";
 
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboar/Dashboar";
-//import Protected from "./components/routes/Protected";
 import NotFound from "./components/routes/NotFound";
 import { ThemeContext } from "./components/services/theme/theme.context";
 import Singin from "./components/Singup/Singup";
@@ -38,9 +37,7 @@ const App = () => {
     },
     {
       path: "/home",
-      element: (
-          <Dashboard />
-      ),
+      element: <Dashboard />
     },
     {
       path: "/listuser",
@@ -63,6 +60,7 @@ const App = () => {
       element: <AddAdminForm />
     },
   ]);
+
   return (
     <div className={`${theme === "dark" && "dark-theme"}`}>
       <RouterProvider router={router} />
